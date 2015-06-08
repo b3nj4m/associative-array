@@ -72,10 +72,12 @@ Get the value associated with `key`.
 
 ### AssociativeArray.set(key, value, index)
 
-Set a key, value pair at a particular index in the `AssociativeArray`. Replaces any value that previously occupied that index.
+Set a key, value pair at a particular index in the `AssociativeArray`.
+Replaces any value that previously occupied that index.
 Will not affect the `AssociativeArray` if `key` is already in it.
+Omitting `index` makes this equivalent to `AssociativeArray.push(key, value)`.
 
-* `key` mixed - the key to associate with `value`
+* `key` mixed - the key to associate with `value`. Can be any key supported by `Map`.
 * `value` mixed - the value to store
 * `index` int - the index to store `value` at
 * returns this
