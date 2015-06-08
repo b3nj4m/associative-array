@@ -49,7 +49,7 @@
 
     Assoc.prototype.forEach = function(fn) {
       for (var i = 0; i < this.length; i++) {
-        if (!fn(this[i].value, i, this[i].key)) {
+        if (fn(this[i].value, i, this[i].key) === false) {
           break;
         }
       }
