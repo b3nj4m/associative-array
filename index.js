@@ -20,6 +20,10 @@
       }
 
       if (!this.has(key)) {
+        if (this[idx] !== undefined) {
+          this.remove(this[idx].key);
+        }
+
         this[idx] = {key: key, value: value};
         this._map.set(key, idx);
       }
@@ -55,6 +59,16 @@
       var result = new Array(this.length);
       for (var i = 0; i < this.length; i++) {
         result[i] = fn(this[i].value, i, this[i].key);
+      }
+      return result;
+    };
+
+    Assoc.prototype.filter = function(fn) {
+      var result = [];
+      for (var i = 0; i < this.length; i++) {
+        if (fn(this[i].value, i, this[i].key)) {
+          result.push(this[i].value);
+        }
       }
       return result;
     };
