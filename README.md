@@ -93,6 +93,12 @@ Omitting `index` makes this equivalent to `AssociativeArray.push(key, value)`.
 * `index` int - the index to store `value` at
 * returns this
 
+### AssociativeArray.reset()
+
+Clear all values from the `AssociativeArray`.
+
+* returns this
+
 ### AssociativeArray.forEach(fn)
 
 Iterate over the values in the `AssociativeArray`.

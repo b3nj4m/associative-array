@@ -47,6 +47,12 @@
       return this[0].value;
     };
 
+    Assoc.prototype.reset = function() {
+      this.splice(0, this.length);
+      this._map.clear();
+      return this;
+    };
+
     Assoc.prototype.forEach = function(fn) {
       for (var i = 0; i < this.length; i++) {
         if (fn(this[i].value, i, this[i].key) === false) {
