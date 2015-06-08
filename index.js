@@ -15,17 +15,24 @@
     };
 
     Assoc.prototype.set = function(key, value, idx) {
-      if (typeof idx === 'undefined') {
-        return this.push(key, value);
-      }
-
-      if (!this.has(key)) {
-        if (this[idx] !== undefined) {
-          this.remove(this[idx].key);
+      if (this.has(key)) {
+        //overwrite old value if idx matches, or idx not supplied
+        if (this._map.get(key) === idx || typeof idx === 'undefined') {
+          this[this._map.get(key)].value = value;
         }
+      }
+      else {
+        if (typeof idx === 'undefined') {
+          this.push(key, value);
+        }
+        else {
+          if (this[idx] !== undefined) {
+            this.remove(this[idx].key);
+          }
 
-        this[idx] = {key: key, value: value};
-        this._map.set(key, idx);
+          this[idx] = {key: key, value: value};
+          this._map.set(key, idx);
+        }
       }
 
       return this;

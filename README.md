@@ -85,8 +85,9 @@ Get the value stored at `index`.
 
 Set a key, value pair at a particular index in the `AssociativeArray`.
 Replaces any value that previously occupied that index.
-Will not affect the `AssociativeArray` if `key` is already in it.
-Omitting `index` makes this equivalent to `AssociativeArray.push(key, value)`.
+If `key` is already present in the `AssociativeArray`, `value` will replace the old value if `index` matches the current index of `key`, or if `index` is not supplied.
+Otherwise, `set()` will not affect the `AssociativeArray` if `key` is already in it.
+Omitting `index` makes this equivalent to `AssociativeArray.push(key, value)` when `key` is not already present in the `AssociativeArray`.
 
 * `key` mixed - the key to associate with `value`. Can be any key supported by `Map`.
 * `value` mixed - the value to store
