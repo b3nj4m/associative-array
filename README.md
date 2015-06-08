@@ -14,6 +14,7 @@ arr.push('key2', {value: 'value2'});
 arr.push('key3', {value: 'value3'});
 
 arr.has('key'); //true
+arr.has('beans'); //false
 
 arr.length; //3
 
@@ -22,15 +23,15 @@ arr.push('key3', {value: 'value3 again'});
 arr.length; //3
 
 arr.map(function(val, idx, key) {
-  return val.value;
-}); //['value', 'value2', 'value3']
+  return idx + ':' + val.value + ':' key;
+}); //['0:value:key', '1:value2:key2', '2:value3:key3']
 
 
 arr.remove('key2');
 
 arr.map(function(val, idx, key) {
-  return val.value;
-}); //['value', 'value3']
+  return idx + ':' + val.value + ':' key;
+}); //['0:value:key', '1:value3:key3']
 ```
 
 ## API
