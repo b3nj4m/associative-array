@@ -42,6 +42,10 @@ Construct a new `AssociativeArray`.
 
 * `size` int - the initial size of the underlying `Array`.
 
+### AssociativeArray.length
+
+The number of items currently stored in the `AssociativeArray`.
+
 ### AssociativeArray.push(key, value)
 
 Push a new key, value pair onto the `AssociativeArray`. Will not affect the `AssociativeArray` if `key` is already in it.
@@ -68,6 +72,13 @@ Check whether the `AssociativeArray` contains `key`.
 Get the value associated with `key`.
 
 * `key` mixed - the key to look for
+* returns mixed
+
+### AssociativeArray.getIdx(index)
+
+Get the value stored at `index`.
+
+* `index` int - the index to look up
 * returns mixed
 
 ### AssociativeArray.set(key, value, index)
