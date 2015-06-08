@@ -1,6 +1,6 @@
 {
   "name": "associative-array",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A combination of Map and Array, with order of keys maintained.",
   "main": "index.js",
   "scripts": {
