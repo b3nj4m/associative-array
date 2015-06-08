@@ -1,0 +1,24 @@
+{
+  "name": "associative-array",
+  "version": "0.0.1",
+  "description": "A combination of Map and Array, with order of keys maintained.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b3nj4m/associative-array.git"
+  },
+  "keywords": [
+    "associative-array",
+    "map",
+    "array"
+  ],
+  "author": "Ben Robbins <ben.robbins@gmail.com> (https://b3nj4m.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/b3nj4m/associative-array/issues"
+  },
+  "homepage": "https://github.com/b3nj4m/associative-array#readme"
+}
