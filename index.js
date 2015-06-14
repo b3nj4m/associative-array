@@ -2,13 +2,18 @@
 (function() {
   function defineAssoc() {
     function Assoc() {
-      Array.apply(this, arguments);
+      var array = new Array();
 
-      this._map = new Map();
+      array._map = new Map();
+
+      for (var key in Assoc.prototype) {
+        if (Assoc.prototype.hasOwnProperty(key)) {
+          array[key] = Assoc.prototype[key];
+        }
+      }
+
+      return array;
     }
-
-    Assoc.prototype = Object.create(Array.prototype);
-    Assoc.prototype.constructor = Assoc;
 
     Assoc.prototype.has = function(key) {
       return this._map.has(key);
@@ -39,19 +44,19 @@
     };
 
     Assoc.prototype.get = function(key) {
-      return this[this._map.get(key)].value;
+      return this.getIdx(this._map.get(key));
     };
 
     Assoc.prototype.getIdx = function(idx) {
-      return this[idx].value;
+      return this[idx] === undefined ? undefined : this[idx].value;
     };
 
     Assoc.prototype.last = function() {
-      return this[this.length - 1].value;
+      return this.getIdx(this.length - 1);
     };
 
     Assoc.prototype.first = function() {
-      return this[0].value;
+      return this.getIdx(0);
     };
 
     Assoc.prototype.reset = function() {
@@ -66,6 +71,8 @@
           break;
         }
       }
+
+      return this;
     };
 
     Assoc.prototype.map = function(fn) {
