@@ -1,25 +1,31 @@
 //A limited implementation of an associative array
 (function() {
   function defineAssoc() {
-    function Assoc() {
-      var array = new Array();
+    function AssociativeArray(size) {
+      var array;
+      if (size === undefined) {
+        array = new Array();
+      }
+      else {
+        array = new Array(size);
+      }
 
       array._map = new Map();
 
-      for (var key in Assoc.prototype) {
-        if (Assoc.prototype.hasOwnProperty(key)) {
-          array[key] = Assoc.prototype[key];
+      for (var key in AssociativeArray.prototype) {
+        if (AssociativeArray.prototype.hasOwnProperty(key)) {
+          array[key] = AssociativeArray.prototype[key];
         }
       }
 
       return array;
     }
 
-    Assoc.prototype.has = function(key) {
+    AssociativeArray.prototype.has = function(key) {
       return this._map.has(key);
     };
 
-    Assoc.prototype.set = function(key, value, idx) {
+    AssociativeArray.prototype.set = function(key, value, idx) {
       if (this.has(key)) {
         //overwrite old value if idx matches, or idx not supplied
         if (this._map.get(key) === idx || typeof idx === 'undefined') {
@@ -43,29 +49,29 @@
       return this;
     };
 
-    Assoc.prototype.get = function(key) {
+    AssociativeArray.prototype.get = function(key) {
       return this.getIdx(this._map.get(key));
     };
 
-    Assoc.prototype.getIdx = function(idx) {
+    AssociativeArray.prototype.getIdx = function(idx) {
       return this[idx] === undefined ? undefined : this[idx].value;
     };
 
-    Assoc.prototype.last = function() {
+    AssociativeArray.prototype.last = function() {
       return this.getIdx(this.length - 1);
     };
 
-    Assoc.prototype.first = function() {
+    AssociativeArray.prototype.first = function() {
       return this.getIdx(0);
     };
 
-    Assoc.prototype.reset = function() {
+    AssociativeArray.prototype.reset = function() {
       this.splice(0, this.length);
       this._map.clear();
       return this;
     };
 
-    Assoc.prototype.forEach = function(fn) {
+    AssociativeArray.prototype.forEach = function(fn) {
       for (var i = 0; i < this.length; i++) {
         if (fn(this[i].value, i, this[i].key) === false) {
           break;
@@ -75,7 +81,7 @@
       return this;
     };
 
-    Assoc.prototype.map = function(fn) {
+    AssociativeArray.prototype.map = function(fn) {
       var result = new Array(this.length);
       for (var i = 0; i < this.length; i++) {
         result[i] = fn(this[i].value, i, this[i].key);
@@ -83,7 +89,7 @@
       return result;
     };
 
-    Assoc.prototype.filter = function(fn) {
+    AssociativeArray.prototype.filter = function(fn) {
       var result = [];
       for (var i = 0; i < this.length; i++) {
         if (fn(this[i].value, i, this[i].key)) {
@@ -93,7 +99,7 @@
       return result;
     };
 
-    Assoc.prototype.remove = function(key) {
+    AssociativeArray.prototype.remove = function(key) {
       var idx = this._map.get(key);
       var value;
 
@@ -111,7 +117,7 @@
       return value;
     };
 
-    Assoc.prototype.push = function(key, val) {
+    AssociativeArray.prototype.push = function(key, val) {
       if (!this.has(key)) {
         Array.prototype.push.call(this, {value: val, key: key});
 
@@ -121,7 +127,7 @@
       return this;
     };
 
-    Assoc.prototype.pop = function() {
+    AssociativeArray.prototype.pop = function() {
       var result = Array.prototype.pop.apply(this, arguments);
 
       this._map.delete(result.key);
@@ -129,7 +135,7 @@
       return result.value;
     };
 
-    return Assoc;
+    return AssociativeArray;
   }
 
   if (typeof module === 'object' && typeof require === 'function') {

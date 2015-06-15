@@ -18,6 +18,10 @@ describe('associative-array', function() {
     expect((new Assoc()).length).to.equal(0);
   });
 
+  it('should accept length param', function() {
+    expect(new Assoc(4).length).to.equal(4);
+  });
+
   describe('push()', function() {
     it('should add to end of array', function() {
       var a = new Assoc();
