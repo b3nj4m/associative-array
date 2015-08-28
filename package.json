@@ -4,6 +4,7 @@
   "description": "A combination of Map and Array, with order of keys maintained.",
   "main": "index.js",
   "scripts": {
+    "postversion": "git push origin master --tags && npm publish",
     "test": "mocha test.js"
   },
   "repository": {
