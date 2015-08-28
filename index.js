@@ -28,7 +28,7 @@
     AssociativeArray.prototype.set = function(key, value, idx) {
       if (this.has(key)) {
         //overwrite old value if idx matches, or idx not supplied
-        if (this._map.get(key) === idx || typeof idx === 'undefined') {
+        if (typeof idx === 'undefined' || this._map.get(key) === idx) {
           this[this._map.get(key)].value = value;
         }
       }
