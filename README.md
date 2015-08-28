@@ -81,6 +81,18 @@ Get the value stored at `index`.
 * `index` int - the index to look up
 * returns mixed
 
+### AssociativeArray.first()
+
+Get the first value.
+
+* returns mixed
+
+### AssociativeArray.last()
+
+Get the last value.
+
+* returns mixed
+
 ### AssociativeArray.set(key, value, index)
 
 Set a key, value pair at a particular index in the `AssociativeArray`.
